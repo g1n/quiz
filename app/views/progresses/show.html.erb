@@ -1,0 +1,18 @@
+<p>
+  <strong>User ID:</strong>
+  <%= @progress.user %>
+</p>
+ 
+<p>
+  <strong>User Level:</strong>
+  <%= @progress.level %>
+</p>
+
+<p>
+    <strong>ID:</strong>
+    <%= @progress.id %>
+</p>
+
+<%= link_to 'Back', new_progress_path %>
+<%= link_to 'Edit', edit_progress_path(@progress) %>
+<%= link_to 'Quiz', progresses_path %>

@@ -1,0 +1,12 @@
+/usr/bin/ruby -r ./siteconf20150501-12751-pn0h8l.rb extconf.rb
+
+make "DESTDIR=" clean
+make: *** Нет правила для сборки цели «clean».  Останов.
+
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+make "DESTDIR=" install
+echo "Nada."
+Nada.

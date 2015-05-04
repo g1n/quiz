@@ -1,0 +1,25 @@
+<h1>Listing progresses</h1>
+
+<%= link_to 'Quiz', controller: 'progresses' %>
+<%= link_to 'New progress', new_progress_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>User ID</th>
+    <th>User Level</th>
+  </tr>
+ 
+  <% @progresses.each do |progress| %>
+    <tr>
+      <td><%= progress.id %></td>
+      <td><%= progress.user %></td>
+      <td><%= progress.level %></td>
+      <td><%= link_to 'Show', progress_path(progress) %></td>
+      <td><%= link_to 'Edit', edit_progress_path(progress) %></td>
+      <td><%= link_to 'Destroy', progress_path(progress),
+    		method: :delete,
+    		data: { confirm: 'Are you sure?'}  %></td>
+    </tr>
+  <% end %>
+</table>

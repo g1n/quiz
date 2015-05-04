@@ -1,0 +1,9 @@
+/usr/bin/ruby -r ./siteconf20150501-12751-11pwr84.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+make: Цель «all» не требует выполнения команд.
+
+make "DESTDIR=" install
