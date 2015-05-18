@@ -1,0 +1,19 @@
+<h1>Questions</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Level</th>
+    <th>Content</th>
+  </tr>
+ 
+  <% @questions.each do |question| %>
+    <tr>
+      <td><%= question.id %></td>
+      <td><%= question.level %></td>
+      <td><%= question.content %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New question', new_question_path %>
