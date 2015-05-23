@@ -10,7 +10,12 @@ class QuestionsController < ApplicationController
   
   def new
     @question = Question.new
-	@question.level = Question.order(level: :asc).last.level + 1
+	_last = Question.order(level: :asc).last
+	if _last == nil
+		@question.level = 1
+	else
+		@question.level = _last.level + 1
+	end
   end
   
   def create
