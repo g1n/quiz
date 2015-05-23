@@ -8,4 +8,12 @@
   <%= @question.content %>
 </p>
 
+<p>
+	<%= form_tag do %>
+		<%= text_field_tag(:attempt) %>
+		<%= submit_tag("OK") %>
+	<% end %>
+</p>
+
 <%= link_to 'Questions', questions_path %>
+<%= render 'debug' %>
