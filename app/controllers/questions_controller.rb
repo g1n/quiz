@@ -4,6 +4,22 @@ class QuestionsController < RegexQuestionController
     @questions = Question.all
   end
   
+  @@patterns = [
+		#1 level
+			[
+				/^$/,					# empty string
+				/.*\d.*/,				# digit
+				/.*[a-zA-Zа-яА-Я].*/,	# character
+				/-/
+			],
+		#2 level
+			[
+				/^$/,
+				/\w/,
+				/-/
+			]
+		]
+  
   def show
 	_id = params[:id].to_i
 	_value = params[:attempt]
