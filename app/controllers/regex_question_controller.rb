@@ -4,6 +4,9 @@ class RegexQuestionController < ApplicationController
 	# html in the controller - like a shit!
 	@debug = "<b>Value:</b><a> #{candidate}</a><br/><br/>"
 	i = 0
+	if ( candidate == nil )
+		candidate = ""
+	end
 	begin
 		if ( candidate =~ Regexp.new(answers[i].value) )
 			color = "#99FF99"

@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150524102025) do
   create_table "questions", force: :cascade do |t|
     t.integer  "level"
     t.text     "content"
+    t.string   "qtype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

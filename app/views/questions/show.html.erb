@@ -2,7 +2,7 @@
   <strong>Level:</strong>
   <%= @question.level %>
 </p>
- 
+
 <p>
   <strong>Content:</strong>
   <%= @question.content %>
@@ -10,7 +10,18 @@
 
 <p>
 	<%= form_tag do %>
-		<%= text_field_tag(:attempt) %>
+		<% case @question.qtype
+			when "radio" %>
+				<%= radio_button_tag(:attempt, :checked) %>
+			<% when "check" %>
+				<%= check_box_tag("attempt[]", :a) %>
+				<%= check_box_tag("attempt[]", :b) %>
+				<%= check_box_tag("attempt[]", :c) %>
+			<% when "text" %>
+				<%= text_field_tag(:attempt) %>
+			<% else %>
+			<a>Ooops!</a><br/>
+		<% end %>
 		<%= submit_tag("OK") %>
 	<% end %>
 </p>

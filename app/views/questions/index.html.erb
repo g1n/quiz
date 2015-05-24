@@ -5,6 +5,7 @@
     <th>ID</th>
     <th>Level</th>
     <th>Content</th>
+	<th>Type</th>
   </tr>
  
   <% @questions.each do |question| %>
@@ -12,6 +13,9 @@
       <td><%= question.id %></td>
       <td><%= question.level %></td>
       <td><%= question.content %></td>
+	  <td><%= question.qtype %></td>
+	  <td><%= link_to 'Show', question_path(question) %></td>
+	  <td><%= link_to 'Edit', edit_question_path(question) %></td>
     </tr>
   <% end %>
 </table>

@@ -4,29 +4,11 @@ class QuestionsController < RegexQuestionController
     @questions = Question.all
   end
   
-  @@patterns = [
-		#1 level
-			[
-				/^$/,					# empty string
-				/.*\d.*/,				# digit
-				/.*[a-zA-Zа-яА-Я].*/,	# character
-				/-/
-			],
-		#2 level
-			[
-				/^$/,
-				/\w/,
-				/-/
-			]
-		]
-  
   def show
-	_id = params[:id].to_i
-	_value = params[:attempt]
-    @question = Question.find_by(level: _id)
-	dbpatterns = Answer.where(level: _id).order(id: :asc)
-	if ( _value != nil )
-		verify _value, dbpatterns
+    @question = get_current_question
+	dbpatterns = Answer.where(level: params[:id].to_i).order(id: :asc)
+	if ( params[:commit] != nil )
+		verify reduce(params[:attempt]), dbpatterns
 	end
   end
   
@@ -40,9 +22,45 @@ class QuestionsController < RegexQuestionController
 	end
   end
   
+  def edit
+	@question = get_current_question
+  end
+  
+  def update
+	@question = get_current_question
+	
+	if @question.update(question_params)
+	    redirect_to @question
+	else
+	    render 'edit'
+	end
+  end
+  
   def create
-    @question = Question.new(params.require(:question).permit(:level, :content))
+    @question = Question.new(question_params)
 	@question.save
 	redirect_to @question
   end
+  
+  private
+	def get_current_question
+		_id = params[:id].to_i
+		return Question.find_by(level: _id)
+	end
+  
+	def question_params
+	    params.require(:question).permit(:level, :content, :qtype)
+	end
+	
+	def reduce val
+		if (val == nil)
+			return ""
+		end
+		
+		if ( val.is_a?(String) )
+			return val
+		else
+			return val.join("")
+		end
+	end
 end
