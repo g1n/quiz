@@ -4,29 +4,13 @@ class QuestionsController < RegexQuestionController
     @questions = Question.all
   end
   
-  @@patterns = [
-		#1 level
-			[
-				/^$/,					# empty string
-				/.*\d.*/,				# digit
-				/.*[a-zA-Zа-яА-Я].*/,	# character
-				/-/
-			],
-		#2 level
-			[
-				/^$/,
-				/\w/,
-				/-/
-			]
-		]
-  
   def show
 	_id = params[:id].to_i
 	_value = params[:attempt]
     @question = Question.find_by(level: _id)
-	# TODO process parameter
+	dbpatterns = Answer.where(level: _id).order(id: :asc)
 	if ( _value != nil )
-		verify _value, @@patterns[_id - 1]
+		verify _value, dbpatterns
 	end
   end
   
