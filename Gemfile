@@ -45,3 +45,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # downgrade for Windows
 gem 'coffee-script-source', '1.8.0'
+
+gem 'yaml_db'
