@@ -1,5 +1,7 @@
 <h1>Answers</h1>
 
+<%= link_to 'New answer', new_answer_path %>
+
 <table>
   <tr>
     <th>ID</th>
@@ -14,8 +16,10 @@
       <td><%= answer.level %></td>
       <td><%= answer.value %></td>
 	  <td><%= answer.positive %></td>
+      <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+      <td><%= link_to 'Destroy', answer_path(answer),
+    		method: :delete,
+    		data: { confirm: 'Are you sure?'}  %></td>
     </tr>
   <% end %>
 </table>
-
-<%= link_to 'New answer', new_answer_path %>
