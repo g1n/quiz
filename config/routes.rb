@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   
   resources :questions
   resources :answers
+  resources :attempts
   resources :progresses
   
   # Example resource route (maps HTTP verbs to controller actions automatically):

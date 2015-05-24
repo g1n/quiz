@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  level: 1
+  value: MyText
+  who: MyString
+  when: 2015-05-24 15:15:45
+
+two:
+  level: 1
+  value: MyText
+  who: MyString
+  when: 2015-05-24 15:15:45

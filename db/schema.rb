@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504113851) do
+ActiveRecord::Schema.define(version: 20150524102025) do
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "level"
+    t.text     "value"
+    t.boolean  "positive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "attempts", force: :cascade do |t|
+    t.integer  "level"
+    t.text     "value"
+    t.string   "who"
+    t.datetime "when"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "progresses", force: :cascade do |t|
     t.string   "user"
