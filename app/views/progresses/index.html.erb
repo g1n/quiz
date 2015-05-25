@@ -15,9 +15,9 @@
       <td><%= progress.id %></td>
       <td><%= progress.user %></td>
       <td><%= progress.level %></td>
-      <td><%= link_to 'Show', progress_path(progress) %></td>
-      <td><%= link_to 'Edit', edit_progress_path(progress) %></td>
-      <td><%= link_to 'Destroy', progress_path(progress),
+      <td><%= link_to 'Show', progress_path(progress.level) %></td>
+      <td><%= link_to 'Edit', edit_progress_path(progress.level) %></td>
+      <td><%= link_to 'Destroy', progress_path(progress.level),
     		method: :delete,
     		data: { confirm: 'Are you sure?'}  %></td>
     </tr>

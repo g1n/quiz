@@ -5,7 +5,8 @@ class ProgressesController < ApplicationController
     end
 
     def show
-	@progress = Progress.find(params[:id])
+	#@progress = Progress.find(params[:level])
+	@progress = Progress.find_by! level: params[:level]
     end
 
     def new
@@ -13,7 +14,8 @@ class ProgressesController < ApplicationController
     end
 
     def edit
-	@progress = Progress.find(params[:id])
+	#@progress = Progress.find(params[:level])
+	@progress = Progress.find_by! level: params[:level]
     end
 
     def create
@@ -29,7 +31,8 @@ class ProgressesController < ApplicationController
     end
 
     def update
-	@progress = Progress.find(params[:id])
+	#@progress = Progress.find(params[:level])
+	@progress = Progress.find_by! level: params[:level]
 	
 	if @progress.update(progress_params)
 	    redirect_to @progress
@@ -39,7 +42,8 @@ class ProgressesController < ApplicationController
     end
 
     def destroy
-	@progress = Progress.find(params[:id])
+	#@progress = Progress.find(params[:level])
+	@progress = Progress.find_by! level: params[:level]
 	@progress.destroy
 	
 	redirect_to progresses_path
