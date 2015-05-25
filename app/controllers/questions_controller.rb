@@ -5,11 +5,15 @@ class QuestionsController < RegexQuestionController
   end
   
   def show
+	level = params[:id].to_i
+	user = session.id
     @question = get_current_question
-	dbpatterns = Answer.where(level: params[:id].to_i).order(id: :asc)
+	dbpatterns = Answer.where(level: level).order(id: :asc)
 	if ( params[:commit] != nil )
-		verify reduce(params[:attempt]), dbpatterns
+		matches = verify reduce(params[:attempt]), dbpatterns
+		Attempt.save_matches(level, user, matches)
 	end
+	@status = get_level_status(level, user)
   end
   
   def new
@@ -62,5 +66,33 @@ class QuestionsController < RegexQuestionController
 		else
 			return val.join("")
 		end
+	end
+	
+	def get_level_status(level, user)
+		answers = Answer.where(level: params[:id].to_i).order(id: :asc)
+		attempts = Attempt.where(level: level, who: user)
+		
+		@solved = Array.new
+		for attempt in attempts
+			@solved.push(attempt.value)
+		end
+		
+		status = Array.new
+		for answer in answers
+			if ( @solved.include? answer.id )
+				if ( answer.positive )
+					status.push(1)
+				else
+					status.push(-1)
+				end
+			else
+				if ( answer.positive )
+					status.push(2)
+				else
+					status.push(-2)
+				end
+			end
+		end
+		return status
 	end
 end

@@ -2,7 +2,7 @@ class CreateAttempts < ActiveRecord::Migration
   def change
     create_table :attempts do |t|
       t.integer :level
-      t.text :value
+      t.integer :value
       t.string :who
       t.datetime :when
 

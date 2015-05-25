@@ -6,6 +6,7 @@
 <div class="base">
 	<%= form_tag do %>
 		<div class="content">
+			<%= level_status(@status) %>
 			<% case @question.qtype
 				when "radio" %>
 					<%= metro_radio_button(:attempt, :checked, " check me") %>

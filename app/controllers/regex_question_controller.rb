@@ -7,8 +7,10 @@ class RegexQuestionController < ApplicationController
 	if ( candidate == nil )
 		candidate = ""
 	end
+	matches = Array.new
 	begin
 		if ( candidate =~ Regexp.new(answers[i].value) )
+			matches.push(answers[i].id)
 			color = "#99FF99"
 			# TODO break loop if can match only one
 		else
@@ -18,6 +20,7 @@ class RegexQuestionController < ApplicationController
 		i += 1
 	end until i == answers.size
 	# TODO return match indexes
+	return matches
   end
   
 end

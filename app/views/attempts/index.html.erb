@@ -1,0 +1,24 @@
+<h1>Attempts</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Level</th>
+    <th>Value</th>
+	<th>User</th>
+	<th>When</th>
+  </tr>
+ 
+  <% @attempts.each do |attempt| %>
+    <tr>
+      <td><%= attempt.id %></td>
+      <td><%= attempt.level %></td>
+      <td><%= attempt.value %></td>
+	  <td><%= attempt.who %></td>
+	  <td><%= attempt.when %></td>
+	  <td><%= link_to 'Destroy', attempt_path(attempt),
+    		method: :delete,
+    		data: { confirm: 'Are you sure?'}  %></td>
+    </tr>
+  <% end %>
+</table>

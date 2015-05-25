@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150524102025) do
 
   create_table "attempts", force: :cascade do |t|
     t.integer  "level"
-    t.text     "value"
+    t.integer  "value"
     t.string   "who"
     t.datetime "when"
     t.datetime "created_at", null: false
