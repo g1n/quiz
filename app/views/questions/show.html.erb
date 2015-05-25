@@ -1,30 +1,29 @@
 <p>
-  <strong>Level:</strong>
-  <%= @question.level %>
-</p>
-
-<p>
   <strong>Content:</strong>
   <%= @question.content %>
 </p>
 
-<p>
+<div class="base">
 	<%= form_tag do %>
-		<% case @question.qtype
-			when "radio" %>
-				<%= radio_button_tag(:attempt, :checked) %>
-			<% when "check" %>
-				<%= check_box_tag("attempt[]", :a) %>
-				<%= check_box_tag("attempt[]", :b) %>
-				<%= check_box_tag("attempt[]", :c) %>
-			<% when "text" %>
-				<%= text_field_tag(:attempt) %>
-			<% else %>
-			<a>Ooops!</a><br/>
-		<% end %>
-		<%= submit_tag("OK") %>
+		<div class="content">
+			<% case @question.qtype
+				when "radio" %>
+					<%= metro_radio_button(:attempt, :checked, " check me") %>
+				<% when "check" %>
+					<%= metro_check_box "attempt[]", "a", " a-item" %><br>
+					<%= metro_check_box "attempt[]", "b", " b-item" %><br>
+					<%= metro_check_box "attempt[]", "c", " c-item" %>
+				<% when "text" %>
+					<%= metro_text_field(:attempt) %>
+				<% else %>
+					<a>Ooops!</a><br>
+			<% end %>	
+		</div>
+		<div>
+			<%= submit_tag("Try") %>
+		</div>
 	<% end %>
-</p>
+</div>
 
 <%= link_to 'Questions', questions_path %>
 <%= render 'debug' %>
