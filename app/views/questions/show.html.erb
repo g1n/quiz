@@ -1,8 +1,3 @@
-<p>
-  <strong>Content:</strong>
-  <%= @question.content %>
-</p>
-
 <div class="base">
 	<%= form_tag do %>
 		<div class="content">
@@ -31,3 +26,7 @@
 
 <%= link_to 'Questions', questions_path %>
 <%= render 'debug' %>
+<p>
+  <strong>Content:</strong>
+  <%= @question.content %>
+</p>
