@@ -9,11 +9,14 @@
 			<%= level_status(@status) %>
 			<% case @question.qtype
 				when "radio" %>
-					<%= metro_radio_button(:attempt, :checked, " check me") %>
+					<%= metro_radio_button(:attempt, :checked, " wide choice") %>
 				<% when "check" %>
-					<%= metro_check_box "attempt[]", "a", " a-item" %><br>
-					<%= metro_check_box "attempt[]", "b", " b-item" %><br>
-					<%= metro_check_box "attempt[]", "c", " c-item" %>
+					<div class="checkbox-container">
+						<%= metro_check_box "attempt[]", "a", " malachite" %><br>
+						<%= metro_check_box "attempt[]", "b", " jasper" %><br>
+						<%= metro_check_box "attempt[]", "c", " rhodonite" %><br>
+						<%= metro_check_box "attempt[]", "d", " emerald" %>
+					</div>
 				<% when "text" %>
 					<%= metro_text_field(:attempt) %>
 				<% else %>
