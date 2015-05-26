@@ -12,6 +12,8 @@
 						<%= metro_check_box "attempt[]", "c", " rhodonite" %><br>
 						<%= metro_check_box "attempt[]", "d", " emerald" %>
 					</div>
+				<% when "number" %>
+					<%= metro_number_field(:attempt) %>
 				<% when "text" %>
 					<%= metro_text_field(:attempt) %>
 				<% else %>

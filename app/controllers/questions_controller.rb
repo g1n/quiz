@@ -1,4 +1,4 @@
-class QuestionsController < RegexQuestionController
+class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
@@ -47,6 +47,29 @@ class QuestionsController < RegexQuestionController
   end
   
   private
+	def verify(candidate, answers)
+		# html in the controller - like a shit!
+		@debug = "<b>Value:</b><a> #{candidate}</a><br/><br/>"
+		i = 0
+		if ( candidate == nil )
+			candidate = ""
+		end
+		matches = Array.new
+		begin
+			if ( candidate =~ Regexp.new(answers[i].value) )
+				matches.push(answers[i].id)
+				color = "#99FF99"
+				# TODO break loop if can match only one
+			else
+				color = ""
+			end
+			@debug += "<a style=\"background-color: #{color}\">" + answers[i].value + "</a><br/>"
+			i += 1
+		end until i == answers.size
+		# TODO return match indexes
+		return matches
+	end
+  
 	def get_current_question
 		_id = params[:id].to_i
 		return Question.find_by(level: _id)
@@ -69,7 +92,7 @@ class QuestionsController < RegexQuestionController
 	end
 	
 	def get_level_status(level, user)
-		answers = Answer.where(level: params[:id].to_i).order(id: :asc)
+		answers = Answer.where(level: params[:id].to_i).order("positive desc, id asc")
 		attempts = Attempt.where(level: level, who: user)
 		
 		@solved = Array.new

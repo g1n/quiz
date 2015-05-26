@@ -10,4 +10,10 @@ class AttemptsController < ApplicationController
 	
 	redirect_to attempts_path
     end
+	
+	def destroy_all
+	Attempt.destroy_all
+	
+	redirect_to attempts_path
+    end
 end

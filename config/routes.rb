@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   post 'questions/:id' => 'questions#show'
+  delete 'attempts' => 'attempts#destroy_all'
   
   resources :questions
   resources :answers

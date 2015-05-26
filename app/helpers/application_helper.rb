@@ -24,4 +24,11 @@ module ApplicationHelper
 		str += "</div>"
 		str.html_safe
 	end
+	
+	def metro_number_field(name)
+		str = "<div class=\"input-control text\">"
+		str += number_field_tag(name, nil, max: 5)
+		str += "</div>"
+		str.html_safe
+	end
 end
